@@ -1,0 +1,11 @@
+[worldserver]
+
+#
+#    PremiumAccount
+#        Description: Enable PremiumAccount for players
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+
+PremiumAccount = 1
+
+
