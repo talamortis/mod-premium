@@ -22,7 +22,9 @@ public:
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& /*targets*/) override // Any hook here
     {
-
+		if (!sConfigMgr->GetBoolDefault("PremiumAccount", true)) 
+            return false;
+		
         QueryResult result = CharacterDatabase.PQuery("SELECT AccountId FROM premium WHERE active = 1 and AccountId = %u", player->GetSession()->GetAccountId());
 
         if (!result)
