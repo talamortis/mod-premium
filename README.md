@@ -39,6 +39,8 @@ or you can manually [download the module] https://github.com/talamortis/mod-prem
 
 ###3) import the sql into the character database
 
+###4) Assign the script to a item such as hearthstone(6948) script name is "premium_account"
+
 **That's it.**
 
 ### (Optional) Edit module configuration
