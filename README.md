@@ -31,9 +31,9 @@ You can do clone it via git under the azerothcore/modules directory:
 
 `cd path/to/azerothcore/modules`
 
-`git clone 
+`git clone https://github.com/talamortis/mod-premium.git
 
-or you can manually [download the module], unzip the premium.rar and place it under the `azerothcore/modules` directory.
+or you can manually [download the module] https://github.com/talamortis/mod-premium.git here unzip the premium.rar and place it under the `azerothcore/modules` directory.
 
 ###2) Re-run cmake and launch a clean build of AzerothCore
 
