@@ -5,7 +5,41 @@
 #        Description: Enable PremiumAccount for players
 #        Default:     1  - (Enabled)
 #                     0  - (Disabled)
-
 PremiumAccount = 1
 
+#    Morph
+#        Description: Enable Morph & demorph option for players
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Morph = 0
+
+#    Bank
+#        Description: Allow Players to use mobile bank
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Bank = 0
+
+#    Auction
+#        Description: Allow Players to use mobile Auction
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Auction = 0
+
+#    Mount
+#        Description: Allow Players to use mount
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Mount = 1
+
+#    Vendor
+#        Description: Allow Players to use vendor
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Vendor = 0
+
+#    Mail Box
+#        Description: Allow Players Access ingame Mail
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+MailBox = 0
 
