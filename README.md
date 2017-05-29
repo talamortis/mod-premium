@@ -1,6 +1,6 @@
 # Premium Account
 
-- Latest Premium Account build status with azerothcore
+- Latest Premium Account build status with azerothcore: [![Build Status](https://travis-ci.org/azerothcore/mod-duelreset.svg?branch=master)](https://travis-ci.org/azerothcore/mod-duelreset)
 
 This is a module for [AzerothCore](http://www.azerothcore.org) that adds Premium account features to players.
 
@@ -11,11 +11,15 @@ This module allows players to:
 - Mobile Bank
 - Mobile Auction
 - Demoph
-- Mount (40%)
+- Mount (60%) players will mount the correct mount for the race
 - Summon Vendor
+- Trainer players will now spawn their class trainer also depending on faction.
+- Added creature spawn check. 
 
 Upcoming features:
-- ** To apply Checks if creatures are already spawned
+- Teleport players to major citys
+- Talent Reset features
+- Not allow morph if player is in shapeshift form
 
 ## Requirements
 
@@ -31,22 +35,22 @@ You can do clone it via git under the azerothcore/modules directory:
 
 `cd path/to/azerothcore/modules`
 
-`git clone https://github.com/talamortis/mod-premium.git
+`git clone https://github.com/azerothcore/mod-duelreset.git`
 
-or you can manually [download the module] https://github.com/talamortis/mod-premium.git here unzip the premium.rar and place it under the `azerothcore/modules` directory.
+or you can manually [download the module](https://github.com/azerothcore/mod-duelreset/archive/master.zip), unzip the DuelReset folder and place it under the `azerothcore/modules` directory.
 
 ###2) Re-run cmake and launch a clean build of AzerothCore
-
-###3) import the sql into the character database
-
-###4) Assign the script to a item such as hearthstone(6948) script name is "premium_account"
 
 **That's it.**
 
 ### (Optional) Edit module configuration
 
-If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `premium.conf.dist` to `premium.conf` and edit it as you prefer.
+If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `duelreset.conf.dist` to `duelreset.conf` and edit it as you prefer.
 
+
+## License
+
+This module is released under the [GNU AGPL license](https://github.com/azerothcore/mod-duelreset/blob/master/LICENSE).
 
 
 
