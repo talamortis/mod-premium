@@ -35,9 +35,11 @@ You can do clone it via git under the azerothcore/modules directory:
 
 `cd path/to/azerothcore/modules`
 
-`git clone https://github.com/azerothcore/mod-duelreset.git`
+`git clone https://github.com/talamortis/mod-premium.git`
 
-or you can manually [download the module](https://github.com/azerothcore/mod-duelreset/archive/master.zip), unzip the DuelReset folder and place it under the `azerothcore/modules` directory.
+or you can manually [download the module](https://github.com/talamortis/mod-premium/archive/master.zip), unzip the premium folder and place it under the `azerothcore/modules` directory.
+
+assign the script to an item such as hearthstone using the script name 'premium_account'
 
 ###2) Re-run cmake and launch a clean build of AzerothCore
 
@@ -45,12 +47,9 @@ or you can manually [download the module](https://github.com/azerothcore/mod-due
 
 ### (Optional) Edit module configuration
 
-If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `duelreset.conf.dist` to `duelreset.conf` and edit it as you prefer.
+If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `premium.conf.dist` to `premium.conf` and edit it as you prefer.
 
 
-## License
-
-This module is released under the [GNU AGPL license](https://github.com/azerothcore/mod-duelreset/blob/master/LICENSE).
 
 
 
