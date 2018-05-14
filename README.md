@@ -4,6 +4,8 @@
 
 This is a module for [AzerothCore](http://www.azerothcore.org) that adds Premium account features to players.
 
+![script screenshot](/screenshots/script.png?raw=true "script screenshot")
+
 Current features:
 
 This module allows players to:
@@ -23,7 +25,7 @@ Upcoming features:
 
 ## Requirements
 
-Premium module currently requires: players to import the sql into character datavase
+Premium module currently requires: players to import the sql into character database
 
 AzerothCore v1.0.1+
 
@@ -35,9 +37,9 @@ You can do clone it via git under the azerothcore/modules directory:
 
 `cd path/to/azerothcore/modules`
 
-`git clone https://github.com/talamortis/mod-premium.git`
+`git clone https://github.com/azerothcore/mod-premium.git`
 
-or you can manually [download the module](https://github.com/talamortis/mod-premium/archive/master.zip), unzip the premium folder and place it under the `azerothcore/modules` directory.
+or you can manually [download the module](https://github.com/azerothcore/mod-premium/archive/master.zip), unzip the premium folder and place it under the `azerothcore/modules` directory.
 
 assign the script to an item such as hearthstone using the script name 'premium_account'
 
@@ -50,6 +52,11 @@ assign the script to an item such as hearthstone using the script name 'premium_
 If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `premium.conf.dist` to `premium.conf` and edit it as you prefer.
 
 
+## Test the module
+
+There is a SQL query so you can create an item and test it quickly.
+
+![item screenshot](/screenshots/item.png?raw=true "item screenshot")
 
 
 
