@@ -58,6 +58,8 @@ There is a SQL query so you can create an item and test it quickly.
 
 ![item screenshot](/screenshots/item.png?raw=true "item screenshot")
 
+# Show your appreciation
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBJFTAJKUNEXC)
 
 
 
