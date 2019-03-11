@@ -337,7 +337,7 @@ public:
             std::string cfg_file = conf_path + "/premium.conf";            
             
 #if PLATFORM == PLATFORM_WINDOWS
-            cfg_file = "my_custom.conf";
+            cfg_file = "premium.conf";
 #endif
             std::string cfg_def_file = cfg_file + ".dist";
             
