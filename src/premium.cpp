@@ -122,7 +122,7 @@ public:
         return false; // Cast the spell on use normally
     }
 
-    void OnGossipSelect(Player* player, Item* item, uint32 /*sender*/, uint32 action)
+    void OnGossipSelect(Player* player, Item* item, uint32 /*sender*/, uint32 action) override
     {
         switch (action)
         {
@@ -318,7 +318,7 @@ public:
         npc->GetMotionMaster()->MoveFollow(player, PET_FOLLOW_DIST, player->GetFollowAngle());
         npc->setFaction(player->getFaction());
 
-        if (salute && !salute[0] == '\0')
+        if (salute && !(salute[0] == '\0'))
             npc->MonsterWhisper(salute, player, false);
     }
 };
