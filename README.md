@@ -1,6 +1,7 @@
-# Premium Account
+# ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
+## Premium Account
 
-- Latest Premium Account build status with azerothcore: [![Build Status](https://travis-ci.org/azerothcore/mod-premium.svg?branch=master)](https://travis-ci.org/azerothcore/mod-premium)
+- Latest Premium Account build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-premium/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-premium)
 
 This is a module for [AzerothCore](http://www.azerothcore.org) that adds Premium account features to players.
 
