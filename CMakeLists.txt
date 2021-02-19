@@ -1,9 +1,8 @@
-CU_SET_PATH("CMAKE_PREMIUM_DIR" "${CMAKE_CURRENT_LIST_DIR}")
-
+# Add cpp files
 AC_ADD_SCRIPT("${CMAKE_CURRENT_LIST_DIR}/src/premium.cpp")
 
-AC_ADD_SCRIPT_LOADER("Premium"      "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")
+# Add scripts to script loader
+AC_ADD_SCRIPT_LOADER("Premium" "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")
 
-CU_ADD_HOOK(AFTER_WORLDSERVER_CMAKE "${CMAKE_CURRENT_LIST_DIR}/src/cmake/after_ws_install.cmake")
-
-message("-- PREMIUM ACCOUNT CONFIGURED --")
+# Add config file
+AC_ADD_CONFIG_FILE("${CMAKE_CURRENT_LIST_DIR}/conf/premium.conf.dist")

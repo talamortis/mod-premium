@@ -5,7 +5,7 @@
 #include "ScriptedGossip.h"
 #include "ScriptMgr.h"
 #include "Spell.h"
-#include "Configuration/Config.h"
+#include "Config.h"
 
 enum Vendors
 {
@@ -323,49 +323,7 @@ public:
     }
 };
 
-
-class premium_world : public WorldScript
-{
-public:
-    premium_world() : WorldScript("premiumworld") { }
-
-    void OnBeforeConfigLoad(bool reload) override
-    {
-        if (!reload) 
-        {
-            std::string conf_path = _CONF_DIR;
-            std::string cfg_file = conf_path + "/premium.conf";            
-            
-#if PLATFORM == PLATFORM_WINDOWS
-            cfg_file = "premium.conf";
-#endif
-            std::string cfg_def_file = cfg_file + ".dist";
-            
-            // Load .conf.dist config
-            if (!sConfigMgr->LoadMore(cfg_def_file.c_str()))
-            {
-                sLog->outString();
-                sLog->outError("Module config: Invalid or missing configuration dist file : %s", cfg_def_file.c_str());
-                sLog->outError("Module config: Verify that the file exists and has \'[worldserver]' written in the top of the file!");
-                sLog->outError("Module config: Use default settings!");
-                sLog->outString();
-            }
-            
-            // Load .conf config
-            if (!sConfigMgr->LoadMore(cfg_file.c_str()))
-            {
-                sLog->outString();
-                sLog->outError("Module config: Invalid or missing configuration file : %s", cfg_file.c_str());
-                sLog->outError("Module config: Verify that the file exists and has \'[worldserver]' written in the top of the file!");
-                sLog->outError("Module config: Use default settings!");
-                sLog->outString();
-            }
-        }
-    }
-};
-
 void AddSC_premium_account()
 {
     new premium_account();
-    new premium_world();
 }
