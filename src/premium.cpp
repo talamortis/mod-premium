@@ -37,7 +37,7 @@ enum Trainers
     ROGUE_H     = 3401,
     SHAMAN_H    = 3344,
     WARLOCK_H   = 3324,
-    WARRIOR_H   = 3354, 
+    WARRIOR_H   = 3354,
 
     DEATHKNIGHT_AH  = 28472
 };
@@ -63,8 +63,8 @@ public:
 
     bool OnUse(Player* player, Item* item, SpellCastTargets const& /*targets*/) override
     {
-        if (!sConfigMgr->GetBoolDefault("PremiumAccount", true)) 
-            return false;  
+        if (!sConfigMgr->GetOption<bool>("PremiumAccount", true))
+            return false;
 
         QueryResult result = CharacterDatabase.PQuery("SELECT AccountId FROM premium WHERE active = 1 AND AccountId = %u", player->GetSession()->GetAccountId());
 
@@ -100,24 +100,24 @@ public:
             player->FindNearestCreature(DEATHKNIGHT_AH, rangeCheck))
             return false;
 
-        player->PlayerTalkClass->ClearMenus();
+        ClearGossipMenuFor(player);
 
-        if (sConfigMgr->GetBoolDefault("Morph", true))
+        if (sConfigMgr->GetOption<bool>("Morph", true))
         {
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Morph", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Demorph", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Morph", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Demorph", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
         }
 
-        if (sConfigMgr->GetBoolDefault("Mount", true))
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT_16, "Mount", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 6);
+        if (sConfigMgr->GetOption<bool>("Mount", true))
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT_16, "Mount", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 6);
 
-        if (sConfigMgr->GetBoolDefault("Trainers", true))
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_TRAINER, GOSSIP_TEXT_TRAIN, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 8);
+        if (sConfigMgr->GetOption<bool>("Trainers", true))
+            AddGossipItemFor(player, GOSSIP_ICON_TRAINER, GOSSIP_TEXT_TRAIN, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 8);
 
-        if (sConfigMgr->GetBoolDefault("PlayerInteraction", true))
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Player interactions", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 9);
+        if (sConfigMgr->GetOption<bool>("PlayerInteraction", true))
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Player interactions", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 9);
 
-        player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
+        SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
 
         return false; // Cast the spell on use normally
     }
@@ -128,14 +128,14 @@ public:
         {
             case GOSSIP_ACTION_INFO_DEF + 1: /*Morph*/
             {
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 ApplyRandomMorph(player);
                 break;
             }
             case GOSSIP_ACTION_INFO_DEF + 2: /*Demorph*/
             {
                 player->DeMorph();
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 break;
             }
             case GOSSIP_ACTION_INFO_DEF + 3: /*Show Bank*/
@@ -162,12 +162,12 @@ public:
                 }
 
                 SummonTempNPC(player, vendorId, salute.c_str());
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 break;
             }
             case GOSSIP_ACTION_INFO_DEF + 6: /*Mount*/
             {
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 switch (player->getRace())
                 {
                     case RACE_HUMAN:         player->CastSpell(player, HUMAN_MOUNT); break;
@@ -199,7 +199,7 @@ public:
                 }
 
                 SummonTempNPC(player, auctionId, salute.c_str());
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 break;
             }
             case GOSSIP_ACTION_INFO_DEF + 8: /* Class Trainers*/
@@ -240,26 +240,26 @@ public:
                 }
 
                 SummonTempNPC(player, trainerId);
-                player->CLOSE_GOSSIP_MENU();
+                CloseGossipMenuFor(player);
                 break;
             }
             case GOSSIP_ACTION_INFO_DEF + 9: /*Player Interactions*/
             {
-                player->PlayerTalkClass->ClearMenus();
+                ClearGossipMenuFor(player);
 
-                if (sConfigMgr->GetBoolDefault("Vendor", true))
-                    player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Vendor", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 5);
+                if (sConfigMgr->GetOption<bool>("Vendor", true))
+                    AddGossipItemFor(player, GOSSIP_ICON_VENDOR, "Vendor", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 5);
 
-                if (sConfigMgr->GetBoolDefault("MailBox", true))
-                    player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Mail Box", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 4);
+                if (sConfigMgr->GetOption<bool>("MailBox", true))
+                    AddGossipItemFor(player, GOSSIP_ICON_VENDOR, "Mail Box", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 4);
 
-                if (sConfigMgr->GetBoolDefault("Bank", true))
-                    player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Show Bank", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
+                if (sConfigMgr->GetOption<bool>("Bank", true))
+                    AddGossipItemFor(player, GOSSIP_ICON_VENDOR, "Show Bank", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
 
-                if (sConfigMgr->GetBoolDefault("Auction", true))
-                    player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Auction House", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 7);
+                if (sConfigMgr->GetOption<bool>("Auction", true))
+                    AddGossipItemFor(player, GOSSIP_ICON_VENDOR, "Auction House", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 7);
 
-                player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
+                SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, item->GetGUID());
                 break;
             }
         }
