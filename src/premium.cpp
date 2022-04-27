@@ -66,7 +66,7 @@ public:
         if (!sConfigMgr->GetOption<bool>("PremiumAccount", true))
             return false;
 
-        QueryResult result = CharacterDatabase.PQuery("SELECT AccountId FROM premium WHERE active = 1 AND AccountId = %u", player->GetSession()->GetAccountId());
+        QueryResult result = CharacterDatabase.Query("SELECT AccountId FROM premium WHERE active = 1 AND AccountId = {}", player->GetSession()->GetAccountId());
 
         if (!result)
             return false;
@@ -309,17 +309,17 @@ public:
         if (!player || entry == 0)
             return;
 
-        int npcDuration = sConfigMgr->GetIntDefault("Premium.NpcDuration", 60) * IN_MILLISECONDS;
+        int npcDuration = sConfigMgr->GetOption<int32>("Premium.NpcDuration", 60) * IN_MILLISECONDS;
         if (npcDuration <= 0) // Safeguard
             npcDuration = 60;
 
         Creature* npc = player->SummonCreature(entry, player->GetPositionX(), player->GetPositionY(), player->GetPositionZ(), 0, TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT, npcDuration);
         npc->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
         npc->GetMotionMaster()->MoveFollow(player, PET_FOLLOW_DIST, player->GetFollowAngle());
-        npc->setFaction(player->getFaction());
+        npc->SetFaction(player->GetFaction());
 
         if (salute && !(salute[0] == '\0'))
-            npc->MonsterWhisper(salute, player, false);
+            npc->Whisper(salute, LANG_UNIVERSAL, player, false);
     }
 };
 
