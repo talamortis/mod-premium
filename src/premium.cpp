@@ -323,7 +323,7 @@ public:
     }
 };
 
-void AddSC_premium_account()
+void AddPremiumAccount()
 {
     new premium_account();
 }
